@@ -1,6 +1,5 @@
 html,
 body {
-    background-color: #D5DBD8;
     width: 100%;
     height:100%;
     color: #4F534E;
@@ -21,6 +20,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
 }
 
 .form-container {
@@ -37,10 +37,19 @@ a {
     justify-content: flex-end;
 }
 
-/*a:hover {*/
-    /*color: #5bc0de;*/
-/*}*/
+.display-comment-container {
+    display: flex;
+    margin-bottom: 10px;
+}
 
-/*.btn, .btn:focus {*/
-    /*outline: none !important;*/
-/*}*/
+.image-template {
+    width: 50px;
+}
+
+.email-template {
+    font-weight: bold;
+}
+
+.comment-email-container {
+    flex: 1;
+}
