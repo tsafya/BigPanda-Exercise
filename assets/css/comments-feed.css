@@ -4,11 +4,8 @@ body {
     height:100%;
     color: #4F534E;
 }
-
-a {
-    color: #373A36;
-    font-size: 24px;
-    text-decoration: none;
+img {
+    border-radius: 4px;
 }
 
 .form-group .form-control {
@@ -21,10 +18,12 @@ a {
     align-items: center;
     justify-content: center;
     overflow-y: auto;
+    margin-top: 20px;
 }
 
 .form-container {
     width: 40%;
+    height: 100%;
 }
 .new-comment-container {
     padding: 50px;

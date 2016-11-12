@@ -1,9 +1,9 @@
 <div class="display-comment-container">
     <div class="image-template">
-        <img height="40px" width="40px" src="{{image}}">
+        <img height="40px" width="40px" ng-src="{{::image}}?d=mm">
     </div>
     <div class="comment-email-container">
-        <div class="email-template">{{email}}</div>
-        <div>{{message}}</div>
+        <div class="email-template">{{::email}}</div>
+        <div>{{::message}}</div>
     </div>
 </div>

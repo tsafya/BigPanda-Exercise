@@ -5,7 +5,7 @@
     <title>Comments Feed</title>
 
     <link rel="stylesheet" href="assets/css/comments-feed.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
 </head>
 <body ng-controller="MainCtrl">
 <div class="main">
@@ -14,40 +14,41 @@
         <div class="new-comment-container">
             <form class="create-form" ng-submit="createComment(newComment)" novalidate>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="newBookmarkTitle" ng-model="newComment.email"
-                           placeholder="Email">
-					<textarea class="form-control" id="newBookmarkURL" ng-model="newComment.message"
+                    <input type="email" id="commentEmail" class="form-control" ng-model="::newComment.email"
+                           placeholder="Email" title="Please enter a valid Email" autofocus>
+					<textarea class="form-control" ng-model="::newComment.message"
                               placeholder="Message"></textarea>
                 </div>
                 <div class="buttons-container">
-                    <button type="submit" class="btn btn-info btn-lg">Submit</button>
+                    <button type="submit" class="btn btn-info btn-lg" title="Please insert valid Email and comment"
+                            ng-disabled="!newComment || !newComment.email || !newComment.message">Submit
+                    </button>
                 </div>
             </form>
         </div>
 
-        <div>
+        <div ng-if="comments.length > 0">
             <!-- Filter input -->
             <input type="text" class="form-control ng-pristine ng-untouched ng-valid ng-empty" ng-model="filter"
                    placeholder="filter" style="margin-bottom: 20px">
             <!-- Comments list display -->
             <div>
                 <div ng-repeat="comment in comments | filter:{message:filter}">
-                    <person-image email="{{::comment.email}}" message="{{::comment.message}}" email-hash="{{::comment.emailHash}}"></person-image>
+                    <comment-row email="{{::comment.email}}" message="{{::comment.message}}" email-hash="{{::comment.emailHash}}"></comment-row>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="http://cryptojs.altervista.org/api/functions_cryptography.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
+<script type="text/javascript"src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.js"></script>
 
-<script src="app/comments-module.js"></script>
-<script src="app/directives/comment-row-template.js"></script>
-<script src="app/services/email-hash.js"></script>
-<script src="app/comments-feed.js"></script>
+<script type="text/javascript" src="app/comments-module.js"></script>
+<script type="text/javascript" src="app/directives/comment-row-directive.js"></script>
+<script type="text/javascript" src="app/comments-feed.js"></script>
 
 </body>
 </html>

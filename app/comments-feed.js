@@ -1,16 +1,15 @@
 'use strict';
 
-commentsApp.controller('MainCtrl', function ($scope, emailHash) {
+commentsApp.controller('MainCtrl', function ($scope) {
 
-    $scope.comments = [
-        {"emailHash": "4e42e58e93aad44fd45884d09419d4ae", "email": "tsafya@gmail.com", "message": "test comment"}
-    ];
+    $scope.comments = [];
 
     function clearNewCommentForm() {
         $scope.newComment = {
             email: '',
             message: ''
         };
+        angular.element('#commentEmail').focus();
     }
 
     //-------------------------------------------------------------------------------------------------
@@ -18,7 +17,7 @@ commentsApp.controller('MainCtrl', function ($scope, emailHash) {
     //-------------------------------------------------------------------------------------------------
 
     $scope.createComment = function (comment) {
-        comment.emailHash = emailHash.getEmail(comment.email);
+        comment.emailHash = Crypto.MD5(comment.email);
         $scope.comments.push(comment);
 
         clearNewCommentForm();
